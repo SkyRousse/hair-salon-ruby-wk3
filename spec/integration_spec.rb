@@ -14,3 +14,14 @@ describe("view hair stylist path", {:type => :feature}) do
   expect(page).to have_content(test_stylist.name())
   end
 end
+
+describe("add stylist path", {:type => :feature}) do
+  it('allows user to add a new stylist', {:type => :feature}) do
+    visit('/stylists/new')
+    click_link("Add Stylist")
+    fill_in('name', :with => "Grace")
+    fill_in('specialty', :with => "Cosmetologist")
+    click_button('Add Stylist')
+    expect(page).to have_content("Grace Cosmetologist")
+  end
+end

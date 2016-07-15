@@ -1,8 +1,11 @@
 .top-heading {
   text-align: center;
-  color: #fff;
   background-color: rgb(255, 102, 96);
   padding: 40px 0;
   margin-bottom: 30px;
+}
+.top-heading h1 {
   font-size: 4rem;
+  color: #fff;
+  font-weight: bolder;
 }
