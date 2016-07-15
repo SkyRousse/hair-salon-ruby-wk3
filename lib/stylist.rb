@@ -28,4 +28,14 @@ class Stylist
     @id = result.first().fetch("id").to_i()
   end
 
+  define_singleton_method(:find) do |id|
+    found_stylist = nil
+    Stylists.all().each() do |stylist|
+      if stylist.id().eql(id)
+        found_stylist = stylist
+      end
+    end
+    found_stylist
+  end
+
 end
