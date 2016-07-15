@@ -38,9 +38,32 @@ describe(Stylist) do
   end
 
   describe('#id') do
-    it('returns a Stylist object by its id') do
-      test_stylist2 = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"}).save()
-      expect(test_stylist2).to(be_an_instance_of(Fixnum))
+    it('returns the id of a stylist object') do
+      test_stylist2 = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"})
+      test_stylist2.save()
+      expect(test_stylist2.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
+  describe('.find') do
+    it('returns a Stylist by its id') do
+      test_stylist = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"})
+      test_stylist2 = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"})
+      test_stylist.save()
+      test_stylist2.save()
+      expect(Stylist.find(test_stylist.id())).to(eq(test_stylist))
+    end
+  end
+
+  describe('#clients') do
+    it('returns an array of clients for a specific stylist') do
+      test_stylist = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"})
+      test_stylist.save()
+      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => test_stylist.id()})
+      test_client.save()
+      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => 503-345-1982, :stylist_id => test_stylist.id()})
+      test_client2.save()
+      expect(test_stylist.clients()).to(eq([test_client, test_client2]))
     end
   end
 end
