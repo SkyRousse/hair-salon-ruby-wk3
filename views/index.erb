@@ -1,0 +1,26 @@
+<h1>Welcome to Chemical Exposures Hair Salon</h1>
+
+<% if @stylists.any?() %>
+  <div class="row">
+    <div class="sm-col-4 sm-col-offset-3">
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <th>Stylist Name</th><th>Specialty</th>
+          <% @stylists.each() do |stylist| %>
+            <tr>
+              <td><a href="/stylists/<%= stylist.id() %>/edit"><%= stylist.name() %></a></td>
+              <td><%= stylist.specialty() %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <% else %>
+      <h3>There aren't any stylists in the database yet</h3>
+    </div>
+  </div>
+  <% end %>
+  <div class="row">
+    <div class="sm-col-2">
+      <button class="btn btn-primary" type="button" name="add_stylist">Add Stylists</button>
+    </div>
+  </div>
