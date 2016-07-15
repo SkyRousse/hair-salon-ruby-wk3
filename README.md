@@ -27,12 +27,12 @@ Use of RESTful routes
 ## Setup/Installation Requirements
 
 * Download from github: https://github.com/SkyRousse/hair-salon-ruby-wk3.git
-* Open a terminal tab and run _$ postgres_
-* Open another terminal tab and run _$ psql_
-* In the tab running psql create a database with this command: _CREATE DATABASE hair-salon;_
-* Then create the following table with this command: _CREATE TABLE clients (id serial PRIMARY KEY, name varchar, gender varchar, phone-number int);_
-* Then create the following table with this command: _CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, specialty varchar);_
-* Open a third terminal tab and run _$ app.rb_ to start Sinatra
+* Open a terminal tab and run $ postgres
+* Open another terminal tab and run $ psql
+* In the tab running psql create a database with this command: CREATE DATABASE hair-salon;
+* Then create the following table with this command: CREATE TABLE clients (id serial PRIMARY KEY, name varchar, gender varchar, phone_number int, stylist_id int);
+* Then create the following table with this command: CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, specialty varchar);
+* Open a third terminal tab and run $ app.rb to start Sinatra
 * Open local host by typing: http://4567 in a browser
 
 ## Known Bugs
