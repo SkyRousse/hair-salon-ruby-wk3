@@ -8,5 +8,19 @@ describe(Stylist) do
     end
   end
 
+  describe('#specialty') do
+    it('returns the specialty of the stylist') do
+      test_stylist = Stylist.new({:name => "Grace", :specialty => "Cosmetologist"})
+      expect(test_stylist.specialty()).to(eq("Cosmetologist"))
+    end
+  end
+
+  describe('#==') do
+    it('compares the attributes of objects to determine if they are the same') do
+      test_stylist = Stylist.new({:name => "Grace", :specialty => "Cosmetologist"})
+      test_stylist2 = Stylist.new({:name => "Grace", :specialty => "Cosmetologist"})
+      expect(test_stylist).to(eq(test_stylist2))
+    end
+  end
 
 end

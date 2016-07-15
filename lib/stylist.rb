@@ -7,6 +7,8 @@ class Stylist
     @specialty = attributes.fetch(:specialty)
   end
 
-  
+  define_method('==') do |another_stylist|
+    self.id().==(another_stylist.id()).&(self.name().==(another_stylist.name())).&(self.specialty().==(another_stylist.specialty()))
+  end
 
 end
