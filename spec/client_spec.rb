@@ -22,6 +22,13 @@ describe(Client) do
     end
   end
 
+  describe('#stylist_id') do
+    it('returns the id of the stylist_id object that this object is connected to') do
+      test_client = Client.new({:id => 2, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => 1})
+      expect(test_client.stylist_id()).to(eq(1))
+    end
+  end
+
   describe('#==') do
     it('compares object attributes to determine if they are the same object') do
       test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => 1})
@@ -29,7 +36,11 @@ describe(Client) do
       expect(test_client).to(eq(test_client2))
     end
   end
-  # describe('#id') do
-  #   it('returns the id of the client')
-  # end
+
+  describe('.all') do
+    it('returns an empty array') do
+      expect(Client.all()).to(eq([]))
+    end
+  end
+
 end
