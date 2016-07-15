@@ -1,8 +1,6 @@
-<h1>Welcome to Chemical Exposures Hair Salon</h1>
-
-<% if @stylists.any?() %>
-  <div class="row">
-    <div class="sm-col-4 sm-col-offset-3">
+<div class="row">
+  <div class="col-md-6">
+    <% if @stylists.any?() %>
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
           <th>Stylist Name</th><th>Specialty</th>
@@ -14,13 +12,17 @@
           <% end %>
         </table>
       </div>
-      <% else %>
-      <h3>There aren't any stylists in the database yet</h3>
-    </div>
+      <a href="/stylists/new"><button class="btn btn-primary" type="button" name="add_stylist">Start Adding Stylists</button></a>
   </div>
-  <% end %>
-  <div class="row">
-    <div class="sm-col-2">
-      <button class="btn btn-primary" type="button" name="add_stylist">Add Stylists</button>
-    </div>
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/stylists-style.jpg" alt="close up image of a clown face with red nose">
   </div>
+    <% else %>
+      <h3>Oh snap! there aren't any stylists in the database yet</h3>
+      <a href="/stylists/new"><button class="btn btn-primary" type="button" name="add_stylist">Start Adding Stylists</button></a>
+  </div>
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/no-stylists.jpg" alt="close up image of a clown face with red nose">
+  </div>
+</div>
+<% end %>
