@@ -1,0 +1,59 @@
+<div class="top-heading">
+  <h1>Stylist: <%= @stylist.name() %></h1>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <% if @stylist.clients().any?() %>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered table-hover">
+          <th>Client Name</th><th>Gender</th><th>Phone Number</th>
+          <% @stylist.clients().each() do |client| %>
+            <tr>
+              <td><%= client.name() %></td>
+              <td><%= client.gender() %></td>
+              <td><%= client.phone_number() %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+      <a href="/clients/new"><button class="btn btn-primary" type="button" name="add_stylist">Add Another Client</button></a>
+  </div>
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/pencil.png" alt="close up image of a clown face with red nose">
+  </div>
+    <% else %>
+      <h3>Oh snap! this stylist doesn't have any clients yet</h3>
+      <h4>You can add new clients for this stylist with the form below</h4>
+  </div>
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/apt-book.png" alt="close up image of a clown face with red nose">
+  </div>
+</div>
+<% end %>
+<div class="mid-heading">
+  <h1>Hook <%= @stylist.name() %> up with Some New Clients</h1>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/darts.png" alt="close up image of a clown face with red nose">
+  </div>
+  <div class="col-md-6">
+    <form action="/clients" method="post">
+      <input type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id() %>">
+
+      <div class="form-group">
+        <label for="name">Client Name</label>
+        <input class="form-control" type="text" name="name" id="name">
+      </div>
+      <div class="form-group">
+        <label for="gender"> Gender</label>
+        <input class="form-control" type="text" name="gender" id="gender">
+      </div>
+      <div class="form-group">
+        <label for="phone_number"> Phone Number</label>
+        <input class="form-control" type="text" name="phone_number" id="phone_number">
+      </div>
+      <button class="btn btn-primary" type="submit">Add Client</button>
+    </form>
+  </div>
+</div>
