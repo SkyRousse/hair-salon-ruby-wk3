@@ -19,7 +19,6 @@ describe("add stylist path", {:type => :feature}) do
   it('allows user to add a new stylist', {:type => :feature}) do
     visit('/')
     click_link("Start Adding Stylists")
-    visit('/stylists/new')
     fill_in('name', :with => "Grace")
     fill_in('specialty', :with => "Cosmetologist")
     click_button('Add Stylist')
@@ -28,14 +27,21 @@ describe("add stylist path", {:type => :feature}) do
 end
 
 describe('view clients path', {:type => :feature}) do
-  it('show the user the clients that a specific hair stylist has') do
+  it('shows the user the clients that a specific hair stylist has') do
     test_stylist = Stylist.new({:id => nil, :name => 'Grace', :specialty => "Cosmetologist"})
     test_stylist.save()
-    visit("/stylists/#{test_stylist.id()}")
-    expect(page)to have_content("Grace")
-    client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => test_stylist.id()})
-    client.save()
-    visit("/stylists/#{test_stylist.id()}")
+    visit('/')
+    click_link("#{test_stylist.name()}")
+    expect(page).to have_content("Grace Oh snap! this stylist doesn't have any clients yet")
+    test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => test_stylist.id()})
+    test_client.save()
+    visit("/stylists/#{test_stylist.id()}/edit")
     expect(page).to have_content('Eelin')
+  end
+end
+
+describe('add client to a specific stylist path', {:type => :feature}) do
+  it('allows a user to create a new client for a specific stylist') do
+    
   end
 end
