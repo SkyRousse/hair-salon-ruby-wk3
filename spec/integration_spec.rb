@@ -42,6 +42,13 @@ end
 
 describe('add client to a specific stylist path', {:type => :feature}) do
   it('allows a user to create a new client for a specific stylist') do
-    
+    test_stylist = Stylist.new({:id => nil, :name => 'Grace', :specialty => "Cosmetologist"})
+    test_stylist.save()
+    visit("/stylists/#{test_stylist.id()}/edit")
+    fill_in('name', :with => 'Daria')
+    fill_in('gender', :with => 'Female')
+    fill_in('phone_number', :with => 505-999-9999)
+    click_button('Add Client')
+    expect(page).to have_content('Daria')
   end
 end
