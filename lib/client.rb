@@ -17,17 +17,19 @@ class Client
     returned_clients = DB.exec("SELECT * FROM clients ORDER BY name ASC")
     clients = []
     returned_clients.each() do |client|
+      id = client.fetch("id").to_i()
       name = client.fetch("name")
       gender = client.fetch("gender")
       phone_number = client.fetch("phone_number")
       stylist_id = client.fetch("stylist_id").to_i()
-      clients.push(Client.new({:id => nil, :name => name, :gender => gender, :phone_number => phone_number, :stylist_id => stylist_id}))
+      clients.push(Client.new({:id => id, :name => name, :gender => gender, :phone_number => phone_number, :stylist_id => stylist_id}))
     end
     clients
   end
 
   define_method(:save) do
-    DB.exec("INSERT INTO clients (name, gender, phone_number, stylist_id) VALUES ('#{@name}', '#{@gender}', #{@phone_number}, #{@stylist_id});")
+    result = DB.exec("INSERT INTO clients (name, gender, phone_number, stylist_id) VALUES ('#{@name}', '#{@gender}', '#{@phone_number}', #{@stylist_id}) RETURNING id;")
+    @id = result.first().fetch("id").to_i()
   end
 
   define_singleton_method(:find) do |id|
@@ -39,7 +41,6 @@ class Client
     end
     found_client
   end
-
 
   define_method(:update) do |attributes|
     @name = attributes.fetch(:name, @name)

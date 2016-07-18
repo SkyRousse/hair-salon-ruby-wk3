@@ -46,11 +46,26 @@ describe(Client) do
   describe('#save') do
     it('adds a client to the array of saved clients') do
       test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => 1})
-      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => "5033451982", :stylist_id => 2})
       test_client.save()
-      test_client2.save()
-      expect(Client.all()).to(eq([test_client, test_client2]))
+      expect(Client.all()).to(eq([test_client]))
     end
   end
 
+  describe('#id') do
+    it('returns the id of a client object') do
+      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => "5033451982", :stylist_id => 2})
+      test_client2.save()
+      expect(test_client2.id()).to(be_an_instance_of(Fixnum))
+    end
+  end
+
+  describe('.find') do
+    it('returns a Client object by its id') do
+      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => 1})
+      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => "5033451982", :stylist_id => 2})
+      test_client.save()
+      test_client2.save()
+      expect(Client.find(test_client2.id())).to(eq(test_client2))
+    end
+  end
 end

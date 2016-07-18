@@ -27,13 +27,12 @@ end
 
 get('/stylists/:id/edit') do
   @stylist = Stylist.find(params.fetch('id').to_i())
-  @client = Client.find(params.fetch('id').to_i())
   erb(:stylist)
 end
 
 get('/clients/:id/edit') do
   @client = Client.find(params.fetch('id').to_i())
-  erb(:stylist)
+  erb(:client)
 end
 
 
