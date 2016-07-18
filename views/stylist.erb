@@ -6,14 +6,14 @@
     <div class="table-responsive">
       <table class="table table-striped table-bordered table-hover">
         <h3><%= @stylist.name() %>'s deets</h3>
-        <h4>You can make updates with the form below</h4>
-        <th>Client Name</th><th>Gender</th><th>Phone Number</th>
+        <th>Stylist Name</th><th>Stylist Specialty</th>
           <tr>
             <td><%= @stylist.name() %></td>
             <td><%= @stylist.specialty() %></td>
           </tr>
       </table>
     </div>
+    <h4>You can make updates with the form below</h4>
     <form action="/stylists/<%= @stylist.id() %>" method="post">
       <input type='hidden' name="_method" value="patch">
       <div class="form-group">
@@ -26,48 +26,47 @@
       </div>
       <button class="btn btn-primary" type="submit">Update</button>
     </form>
+  </div>
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/pencil.png" alt="black and white drawing of a pencil">
+  </div>
+</div>
+<div class="row">
+  <div class="mid-heading">
+    <h1>Hook <%= @stylist.name() %> up with Some New Clients</h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6">
+    <img class="img-responsive img-rounded" src="/img/apt-book.png" alt="drawing of an appointment book with no entries">
+  </div>
+  <div class="col-md-6">
     <% if @stylist.clients().any?() %>
       <h3><%= @stylist.name() %>'s Clients:</h3>
       <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
-          <th>Client Name</th><th>Gender</th><th>Phone Number</th>
+          <th>Client Name</th><th>Gender</th><th>Phone Number</th><th>Remove</th>
           <% @stylist.clients().each() do |client| %>
             <tr>
               <td><a href="/clients/<%= client.id() %>/edit"><%= client.name() %></td>
               <td><%= client.gender() %></td>
               <td><%= client.phone_number() %></td>
+              <td>
+                <form action='/clients/<%= client.id() %>/<%= @stylist.id() %>/remove' method="post">
+                  <input type="hidden" name="_method" value="delete">
+                  <button type="submit">X</button>
+                </form>
+              </td>
             </tr>
           <% end %>
         </table>
       </div>
-  </div>
-  <div class="col-md-6">
-    <img class="img-responsive img-rounded" src="/img/apt-book.png" alt="drawing of an appointment book with no entries">
-  </div>
-    <% else %>
+      <% else %>
       <h3>Oh snap! this stylist doesn't have any clients yet</h3>
+      <% end %>
       <h4>You can add new clients for this stylist with the form below</h4>
-    </div>
-  <div class="col-md-6">
-    <img class="img-responsive img-rounded" src="/img/apt-book.png" alt="drawing of an appointment book with no entries">
-  </div>
-</div>
-<% end %>
-<div class="row">
-  <div class="col-md-12">
-    <div class="mid-heading">
-      <h1>Hook <%= @stylist.name() %> up with Some New Clients</h1>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-6">
-    <img class="img-responsive img-rounded" src="/img/pencil.png" alt="black and white drawing of a pencil">
-  </div>
-  <div class="col-md-6">
     <form action="/clients" method="post">
       <input type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id() %>">
-
       <div class="form-group">
         <label for="client_name">Client Name</label>
         <input class="form-control" type="text" name="client_name" id="client_name">
@@ -85,11 +84,9 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-12">
     <a href="/">
       <div class="home-link">
         <h1>Take me Back to the Main Page</h1>
       </div>
     </a>
-  </div>
 </div>

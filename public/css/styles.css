@@ -9,6 +9,12 @@
   color: #fff;
   font-weight: bolder;
 }
+h3 {
+  font-size: 2.75rem;
+}
+h4 {
+  font-size: 2.125rem;
+}
 .mid-heading {
   text-align: center;
   background-color: rgb(21, 140, 186);

@@ -7,7 +7,7 @@ set(:show_exceptions, false)
 describe("view hair stylist path", {:type => :feature}) do
   it('shows the user the list of hair stylists in the database') do
   visit('/')
-  expect(page).to have_content("Oh snap! there aren't any stylists in the database yet")
+  expect(page).to have_content("Oh snap! there aren't any stylists in the database")
   test_stylist = Stylist.new({:id => nil, :name => 'Grace', :specialty => "Cosmetologist"})
   test_stylist.save()
   visit('/')
