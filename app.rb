@@ -47,16 +47,6 @@ post('/clients') do
   erb(:stylist)
 end
 
-get('/clients/:id/edit') do
-  @client = Client.find(params.fetch("id").to_i())
-  erb(:client_edit)
-end
-
-get('/clients/:id') do
-  @clients = Client.find(params.fetch('id').to_i())
-  erb(:client)
-end
-
 patch('/clients/:id') do
   name = params.fetch('name')
   gender = params.fetch('gender')

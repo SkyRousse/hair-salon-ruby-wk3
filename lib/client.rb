@@ -47,8 +47,8 @@ class Client
     @gender = attributes.fetch(:gender, @gender)
     @phone_number = attributes.fetch(:phone_number, @phone_number)
     @id = self.id()
-    DB.exec("UPDATE cities SET name = '#{@name}' WHERE id = #{@id};")
-    DB.exec("UPDATE cities SET gender = '#{@gender}' WHERE id = #{@id};")
-    DB.exec("UPDATE cities SET phone_number = '#{@name}' WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET gender = '#{@gender}' WHERE id = #{@id};")
+    DB.exec("UPDATE clients SET phone_number = '#{@name}' WHERE id = #{@id};")
   end
 end
