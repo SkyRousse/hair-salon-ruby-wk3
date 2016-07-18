@@ -33,7 +33,7 @@ describe('view clients path', {:type => :feature}) do
     visit('/')
     click_link("#{test_stylist.name()}")
     expect(page).to have_content("Grace Oh snap! this stylist doesn't have any clients yet")
-    test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => test_stylist.id()})
+    test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => test_stylist.id()})
     test_client.save()
     visit("/stylists/#{test_stylist.id()}/edit")
     expect(page).to have_content('Eelin')
@@ -47,7 +47,7 @@ describe('add client to a specific stylist path', {:type => :feature}) do
     visit("/stylists/#{test_stylist.id()}/edit")
     fill_in('name', :with => 'Daria')
     fill_in('gender', :with => 'Female')
-    fill_in('phone_number', :with => 505-999-9999)
+    fill_in('phone_number', :with => "5059999999")
     click_button('Add Client')
     expect(page).to have_content('Daria')
   end

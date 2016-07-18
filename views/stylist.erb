@@ -17,10 +17,9 @@
           <% end %>
         </table>
       </div>
-      <a href="/clients/new"><button class="btn btn-primary" type="button" name="add_stylist">Add Another Client</button></a>
   </div>
   <div class="col-md-6">
-    <img class="img-responsive img-rounded" src="/img/pencil.png" alt="black and white drawing of a pencil">
+    <img class="img-responsive img-rounded" src="/img/apt-book.png" alt="drawing of an appointment book with no entries">
   </div>
     <% else %>
       <h3>Oh snap! this stylist doesn't have any clients yet</h3>
@@ -40,7 +39,7 @@
 </div>
 <div class="row">
   <div class="col-md-6">
-    <img class="img-responsive img-rounded" src="/img/darts.png" alt="drawing of a dart board with a dart in the center">
+    <img class="img-responsive img-rounded" src="/img/pencil.png" alt="black and white drawing of a pencil">
   </div>
   <div class="col-md-6">
     <form action="/clients" method="post">
@@ -56,7 +55,7 @@
       </div>
       <div class="form-group">
         <label for="phone_number"> Phone Number</label>
-        <input class="form-control" type="text" name="phone_number" id="phone_number">
+        <input class="form-control" type="tel" name="phone_number" id="phone_number">
       </div>
       <button class="btn btn-primary" type="submit">Add Client</button>
     </form>

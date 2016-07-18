@@ -59,9 +59,9 @@ describe(Stylist) do
     it('returns an array of clients for a specific stylist') do
       test_stylist = Stylist.new({:id => nil, :name => "Alexis", :specialty => "Esthetician"})
       test_stylist.save()
-      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => 503-345-7898, :stylist_id => test_stylist.id()})
+      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => test_stylist.id()})
       test_client.save()
-      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => 503-345-1982, :stylist_id => test_stylist.id()})
+      test_client2 = Client.new({:id => nil, :name => "Maven", :gender => "Male", :phone_number => "5033451982", :stylist_id => test_stylist.id()})
       test_client2.save()
       expect(test_stylist.clients()).to(eq([test_client, test_client2]))
     end
