@@ -10,7 +10,7 @@
           <th>Client Name</th><th>Gender</th><th>Phone Number</th>
           <% @stylist.clients().each() do |client| %>
             <tr>
-              <td><%= client.name() %></td>
+              <td><a href="/clients/<%= client.id() %>/edit"><%= client.name() %></td>
               <td><%= client.gender() %></td>
               <td><%= client.phone_number() %></td>
             </tr>

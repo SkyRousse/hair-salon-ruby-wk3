@@ -27,8 +27,15 @@ end
 
 get('/stylists/:id/edit') do
   @stylist = Stylist.find(params.fetch('id').to_i())
+  @client = Client.find(params.fetch('id').to_i())
   erb(:stylist)
 end
+
+get('/clients/:id/edit') do
+  @client = Client.find(params.fetch('id').to_i())
+  erb(:stylist)
+end
+
 
 post('/clients') do
   stylist_id = params.fetch('stylist_id').to_i()
@@ -39,4 +46,25 @@ post('/clients') do
   @client = Client.new({:name => name, :gender => gender, :phone_number => phone_number, :stylist_id => stylist_id})
   @client.save()
   erb(:stylist)
+end
+
+get('/clients/:id/edit') do
+  @client = Client.find(params.fetch("id").to_i())
+  erb(:client_edit)
+end
+
+get('/clients/:id') do
+  @clients = Client.find(params.fetch('id').to_i())
+  erb(:client)
+end
+
+patch('/clients/:id') do
+  name = params.fetch('name')
+  gender = params.fetch('gender')
+  phone_number = params.fetch('phone_number')
+  @client = Client.find(params.fetch('id').to_i())
+  @client.update({:name => name, :gender => gender, :phone_number => phone_number})
+  @clients = Client.all()
+  @stylists = Stylist.all()
+  erb(:client)
 end
