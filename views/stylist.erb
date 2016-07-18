@@ -3,6 +3,29 @@
 </div>
 <div class="row">
   <div class="col-md-6">
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered table-hover">
+        <h3><%= @stylist.name() %>'s deets</h3>
+        <h4>You can make updates with the form below</h4>
+        <th>Client Name</th><th>Gender</th><th>Phone Number</th>
+          <tr>
+            <td><%= @stylist.name() %></td>
+            <td><%= @stylist.specialty() %></td>
+          </tr>
+      </table>
+    </div>
+    <form action="/stylists/<%= @stylist.id() %>" method="post">
+      <input type='hidden' name="_method" value="patch">
+      <div class="form-group">
+        <label for="stylist_name">Update Stylist Name</label>
+        <input class="form-control" type="text" name="stylist_name" id="stylist_name">
+      </div>
+      <div class="form-group">
+        <label for="name">Update Stylist Specialty</label>
+        <input class="form-control" type="text" name="specialty" id="specialty">
+      </div>
+      <button class="btn btn-primary" type="submit">Update</button>
+    </form>
     <% if @stylist.clients().any?() %>
       <h3><%= @stylist.name() %>'s Clients:</h3>
       <div class="table-responsive">
@@ -46,8 +69,8 @@
       <input type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id() %>">
 
       <div class="form-group">
-        <label for="name">Client Name</label>
-        <input class="form-control" type="text" name="name" id="name">
+        <label for="client_name">Client Name</label>
+        <input class="form-control" type="text" name="client_name" id="client_name">
       </div>
       <div class="form-group">
         <label for="gender"> Gender</label>

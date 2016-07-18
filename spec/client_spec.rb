@@ -68,4 +68,22 @@ describe(Client) do
       expect(Client.find(test_client2.id())).to(eq(test_client2))
     end
   end
+
+  describe('#update') do
+    it('will update the attributes of the client object') do
+      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => 1})
+      test_client.save()
+      test_client.update({:name => "Maven", :gender => "Male", :phone_number => "5033451982", :stylist_id => 2})
+      expect(test_client.name()).to(eq("Maven"))
+    end
+  end
+
+  describe('#remove') do
+    it('removes the specified client from the database') do
+      test_client = Client.new({:id => nil, :name => "Eelin", :gender => "Female", :phone_number => "5033457898", :stylist_id => 1})
+      test_client.save()
+      test_client.remove()
+      expect(Client.all()).to(eq([]))
+    end
+  end
 end
