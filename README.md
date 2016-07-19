@@ -30,8 +30,10 @@ Use of RESTful routes
 * Open a terminal tab and run $ postgres
 * Open another terminal tab and run $ psql
 * In the tab running psql create a database with this command: CREATE DATABASE hair_salon;
+* In that same terminal tab move into that database with this command: \c hair_salon
 * Then create the following table with this command: CREATE TABLE clients (id serial PRIMARY KEY, name varchar, gender varchar, phone_number varchar, stylist_id int);
 * Then create the following table with this command: CREATE TABLE stylists (id serial PRIMARY KEY, name varchar, specialty varchar);
+* If a testing database is needed run this command: CREATE DATABASE hair_salon_test WITH TEMPLATE hair_salon;
 * Open a third terminal tab and run $ app.rb to start Sinatra
 * Open local host by typing: http://4567 in a browser
 
@@ -50,6 +52,7 @@ Sky: <a href="mailto:skyrousse@gmail.com">skyrousse@gmail.com</a>
 * Sinatra
 * Capybara
 * Postgres
+* PSQL
 
 ### License
 
