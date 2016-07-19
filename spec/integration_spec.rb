@@ -90,4 +90,23 @@ describe("remove client path", {:type => :feature}) do
     click_button('X')
     expect(page).to have_content("Oh snap! this stylist doesn't have any clients yet")
   end
+
+  describe('update client path', {:type => :feature}) do
+    it('allows a user to update the name gender and phone number of a client') do
+    test_stylist = Stylist.new({:id => nil, :name => 'Grace', :specialty => "Cosmetologist"})
+    test_stylist.save()
+    visit("/stylists/#{test_stylist.id()}/edit")
+    fill_in('client_name', :with => 'Daria')
+    fill_in('gender', :with => 'Female')
+    fill_in('phone_number', :with => "5059999999")
+    click_button('Add Client')
+    expect(page).to have_content('Daria')
+    click_link('Daria')
+    fill_in('client_name', :with => "Darren")
+    fill_in('gender', :with => "Male")
+    fill_in('phone_number', :with => "2223334455")
+    click_button('Update')
+    expect(page).to have_content('Darren Male')
+    end
+  end
 end
