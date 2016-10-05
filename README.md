@@ -43,7 +43,7 @@ No known bugs at this time.
 
 ## Support and contact details
 If you have questions comments or concerns please reach out to me at:
-Sky: <a href="mailto:skyrousse@gmail.com">skyrousse@gmail.com</a>
+<a href="mailto:skyrousse@gmail.com">skyrousse@gmail.com</a>
 
 ## Technologies Used
 
